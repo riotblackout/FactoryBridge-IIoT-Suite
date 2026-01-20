@@ -16,8 +16,8 @@ Want to see it run? You don't need to manually configure ports.
 ### 1) Run the Turbine Simulator (Modbus TCP Server)
 From repo root:
 
-powershell
-cd LegacyMachine
+powershell ->
+cd LegacyMachine ->
 dotnet run
 
 
@@ -32,3 +32,4 @@ FactoryBridge implements the "OT Triangle" pattern: **Simulator â†’ Middleware â
 4.  **Visualize:** The Blazor Server UI receives updates via event callbacks, refreshing the gauges in real-time.
 
 5.  **Protect:** If `RPM > 2500`, the Alert Engine triggers an SMTP notification (with a 10-minute cooldown to prevent alarm fatigue).
+
