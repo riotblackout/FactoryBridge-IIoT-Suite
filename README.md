@@ -15,16 +15,6 @@ Want to see it run? You don't need to manually configure ports.
 
 FactoryBridge implements the "OT Triangle" pattern: **Simulator → Middleware → Historian/Dashboard**.
 
-### System Diagram
-```mermaid
-graph LR
-    A[Legacy Turbine Simulator] -- Modbus TCP (Port 5020) --> B(FactoryBridge Middleware)
-    B -- Polling (100ms) --> C{Orchestrator}
-    C --> D[SQLite Historian]
-    C --> E[Real-Time Dashboard]
-    C -- Threshold Exceeded --> F[Alert Engine]
-    F --> G[SMTP Email Alert]
-    
 ### Data Flow Lifecycle
 1.  **Ingest:** The Background Orchestrator polls the `LegacyMachine` (Modbus Server) every 100ms for registers (RPM, Temperature, Power).
 2.  **Process:** Raw bytes are converted to engineering units (Big-Endian float parsing).
