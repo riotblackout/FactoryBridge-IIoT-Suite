@@ -11,15 +11,6 @@ Want to see it run? You don't need to manually configure ports.
 2.  **Double-click `run_demo.bat`** (Windows).
 3.  The script automatically launches the **Turbine Simulator** (Port 5020) and the **Web Dashboard** in the correct order.
 
-## ▶️ Run Manually (Without `run_demo.bat`)
-
-### 1) Run the Turbine Simulator (Modbus TCP Server)
-From repo root:
-
-powershell ->
-cd LegacyMachine ->
-dotnet run
-
 
 ## 🏗️ Architecture & Data Flow
 
@@ -32,4 +23,5 @@ FactoryBridge implements the "OT Triangle" pattern: **Simulator → Middleware �
 4.  **Visualize:** The Blazor Server UI receives updates via event callbacks, refreshing the gauges in real-time.
 
 5.  **Protect:** If `RPM > 2500`, the Alert Engine triggers an SMTP notification (with a 10-minute cooldown to prevent alarm fatigue).
+
 
