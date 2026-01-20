@@ -1,0 +1,51 @@
+@page "/reports"
+@using FactoryBridgeDashboard.Services
+@using FactoryBridgeDashboard.Data
+@inject HistorianService Historian
+
+<PageTitle>Compliance Reports</PageTitle>
+
+<div style="padding: 20px; font-family: sans-serif;">
+    <h1 style="border-bottom: 2px solid #333; padding-bottom: 10px;">📊 Historical Audit Logs</h1>
+    <p>Showing last 50 database entries.</p>
+
+    @if (history == null)
+    {
+        <p><em>Loading database records...</em></p>
+    }
+    else
+    {
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <thead>
+                <tr style="background-color: #333; color: white; text-align: left;">
+                    <th style="padding: 10px;">Timestamp</th>
+                    <th style="padding: 10px;">Machine ID</th>
+                    <th style="padding: 10px;">Speed (RPM)</th>
+                    <th style="padding: 10px;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in history)
+                {
+                    // Highlight CRITICAL rows in Red
+                    <tr style="border-bottom: 1px solid #ddd; background-color: @(row.Status == "CRITICAL" ? "#ffcccc" : "white"); color: black;">
+                        <td style="padding: 10px;">@row.Timestamp</td>
+                        <td style="padding: 10px;">@row.MachineName</td>
+                        <td style="padding: 10px;">@row.Speed.ToString("N0")</td>
+                        <td style="padding: 10px; font-weight: bold;">@row.Status</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    private List<MachineReading>? history;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Pull data from the SQLite file
+        history = await Historian.GetRecentHistory();
+    }
+}
