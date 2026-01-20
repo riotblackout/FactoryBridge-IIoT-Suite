@@ -3,3 +3,7 @@
 **/.vs/
 **/*.db
 **/*.user
+# SQLite artifacts
+*.db-shm
+*.db-wal
+*.db
