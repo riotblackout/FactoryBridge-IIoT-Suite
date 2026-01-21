@@ -24,14 +24,14 @@ FactoryBridge implements the "OT Triangle" pattern: **Simulator → Middleware �
 
 5.  **Protect:** If `RPM > 2500`, the Alert Engine triggers an SMTP notification (with a 10-minute cooldown to prevent alarm fatigue).
 
-▶️ Run Manually (Without run_demo.bat)
-1) Run the Turbine Simulator (Modbus TCP Server)
+▶️ Run Manually (Without ```run_demo.bat```)
+1) **Run the Turbine Simulator (Modbus TCP Server)**
 
 Open terminal in repo root
 
-Run: cd LegacyMachine
+Run: ```cd LegacyMachine```
 
-Run: dotnet run
+Run: ```dotnet run```
 
 Expected:
 
@@ -39,23 +39,23 @@ Modbus TCP server listening on Port 5020
 
 Simulator begins emitting register values (RPM, Temperature, Power)
 
-2) Run the Web Dashboard (Blazor Server)
+2) **Run the Web Dashboard (Blazor Server)**
 
 Open a new terminal
 
-Run: cd FactoryBridgeDashboard
+Run: ```cd FactoryBridgeDashboard```
 
-Run: dotnet run
+Run: ```dotnet run```
 
 Then open the URL printed in the terminal (e.g., http://localhost:xxxx).
 
-3) Run the CLI Client (Validation)
+3) **Run the CLI Client (Validation)**
 
 Open a new terminal
 
-Run: cd BridgeClient
+Run: ```cd BridgeClient```
 
-Run: dotnet run
+Run: ```dotnet run```
 
 This connects to the pipeline and prints live readings for validation.
 
@@ -80,6 +80,7 @@ Example (User Secrets):
 ```dotnet user-secrets set "Smtp:Username" "your_email@gmail.com"```
 ```dotnet user-secrets set "Smtp:Password" "your_app_password"```
 ```dotnet user-secrets set "Smtp:To" "receiver@gmail.com"```
+
 
 
 
