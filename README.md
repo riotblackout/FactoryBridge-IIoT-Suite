@@ -73,7 +73,9 @@ If you want to enable SMTP alerts, use environment variables or .NET User Secret
 Example (User Secrets):
 
 ```powershell```
+
 ```cd FactoryBridgeDashboard```
+
 ```dotnet user-secrets init```
 
 ```dotnet user-secrets set "Smtp:Host" "smtp.gmail.com"```
@@ -81,6 +83,29 @@ Example (User Secrets):
 ```dotnet user-secrets set "Smtp:Username" "your_email@gmail.com"```
 ```dotnet user-secrets set "Smtp:Password" "your_app_password"```
 ```dotnet user-secrets set "Smtp:To" "receiver@gmail.com"```
+
+## 📁 Repository Structure
+
+- `LegacyMachine/` → Modbus TCP turbine simulator (digital twin)
+- `FactoryBridgeDashboard/` → Blazor dashboard + middleware services + historian
+- `BridgeClient/` → CLI validation client
+- `docs/` → screenshots and documentation assets
+
+## ⚙️ Configuration
+
+Key runtime values:
+- Modbus Port: `5020`
+- Polling Interval: `100ms`
+- RPM Alert Threshold: `2500`
+- Alert Cooldown: `10 minutes`
+
+## Why FactoryBridge Exists
+
+Many factories still run Modbus-based PLCs with no direct integration to modern analytics stacks.
+FactoryBridge demonstrates a practical OT-to-IT bridge: polling, conversion, historian persistence,
+real-time dashboards, and alerting with cooldown to prevent alarm fatigue.
+
+
 
 
 
