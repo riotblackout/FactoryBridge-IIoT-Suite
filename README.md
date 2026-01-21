@@ -24,15 +24,15 @@ FactoryBridge implements the "OT Triangle" pattern: **Simulator → Middleware �
 
 5.  **Protect:** If `RPM > 2500`, the Alert Engine triggers an SMTP notification (with a 10-minute cooldown to prevent alarm fatigue).
 
-## ▶️ Run Manually (Without ```run_demo.bat```)
+## ▶️ Run Manually (Without `run_demo.bat`)
 
 1) **Run the Turbine Simulator (Modbus TCP Server)**
 
 Open terminal in repo root
 
-Run: ```cd LegacyMachine```
+Run: `cd LegacyMachine`
 
-Run: ```dotnet run```
+Run: `dotnet run`
 
 Expected:
 
@@ -44,9 +44,9 @@ Simulator begins emitting register values (RPM, Temperature, Power)
 
 Open a new terminal
 
-Run: ```cd FactoryBridgeDashboard```
+Run: `cd FactoryBridgeDashboard`
 
-Run: ```dotnet run```
+Run: `dotnet run`
 
 Then open the URL printed in the terminal (e.g., http://localhost:xxxx).
 
@@ -54,9 +54,9 @@ Then open the URL printed in the terminal (e.g., http://localhost:xxxx).
 
 Open a new terminal
 
-Run: ```cd BridgeClient```
+Run: `cd BridgeClient`
 
-Run: ```dotnet run```
+Run: `dotnet run`
 
 This connects to the pipeline and prints live readings for validation.
 
@@ -72,17 +72,13 @@ If you want to enable SMTP alerts, use environment variables or .NET User Secret
 
 Example (User Secrets):
 
-```powershell```
-
-```cd FactoryBridgeDashboard```
-
-```dotnet user-secrets init```
-
-```dotnet user-secrets set "Smtp:Host" "smtp.gmail.com"```
-```dotnet user-secrets set "Smtp:Port" "587"```
-```dotnet user-secrets set "Smtp:Username" "your_email@gmail.com"```
-```dotnet user-secrets set "Smtp:Password" "your_app_password"```
-```dotnet user-secrets set "Smtp:To" "receiver@gmail.com"```
+1. Run: `cd FactoryBridgeDashboard`
+2.  Run: `dotnet user-secrets init`
+3. Run: `dotnet user-secrets set "Smtp:Host" "smtp.gmail.com"`
+4.  Run: `dotnet user-secrets set "Smtp:Port" "587"`
+5. Run: `dotnet user-secrets set "Smtp:Username" "your_email@gmail.com"`
+6. Run: `dotnet user-secrets set "Smtp:Password" "your_app_password"`
+7. Run: `dotnet user-secrets set "Smtp:To" "receiver@gmail.com"`
 
 ## 📁 Repository Structure
 
@@ -104,6 +100,7 @@ Key runtime values:
 Many factories still run Modbus-based PLCs with no direct integration to modern analytics stacks.
 FactoryBridge demonstrates a practical OT-to-IT bridge: polling, conversion, historian persistence,
 real-time dashboards, and alerting with cooldown to prevent alarm fatigue.
+
 
 
 
