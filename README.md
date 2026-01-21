@@ -24,4 +24,26 @@ FactoryBridge implements the "OT Triangle" pattern: **Simulator → Middleware �
 
 5.  **Protect:** If `RPM > 2500`, the Alert Engine triggers an SMTP notification (with a 10-minute cooldown to prevent alarm fatigue).
 
+## 🔐 SMTP Alerts (Safe Setup)
+
+SMTP email alerting is supported, but disabled by default for safety.
+
+- The SMTP block exists in `FactoryBridgeDashboard/Services/AlertService.cs`
+- It is intentionally commented out to prevent requiring credentials in a public repo
+
+**Important:** Never commit SMTP credentials.  
+If you want to enable SMTP alerts, use environment variables or .NET User Secrets.
+
+Example (User Secrets):
+
+```powershell```
+```cd FactoryBridgeDashboard```
+```dotnet user-secrets init```
+
+```dotnet user-secrets set "Smtp:Host" "smtp.gmail.com"```
+```dotnet user-secrets set "Smtp:Port" "587"```
+```dotnet user-secrets set "Smtp:Username" "your_email@gmail.com"```
+```dotnet user-secrets set "Smtp:Password" "your_app_password"```
+```dotnet user-secrets set "Smtp:To" "receiver@gmail.com"```
+
 
