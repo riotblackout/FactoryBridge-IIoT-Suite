@@ -24,7 +24,8 @@ FactoryBridge implements the "OT Triangle" pattern: **Simulator → Middleware �
 
 5.  **Protect:** If `RPM > 2500`, the Alert Engine triggers an SMTP notification (with a 10-minute cooldown to prevent alarm fatigue).
 
-▶️ Run Manually (Without ```run_demo.bat```)
+## ▶️ Run Manually (Without ```run_demo.bat```)
+
 1) **Run the Turbine Simulator (Modbus TCP Server)**
 
 Open terminal in repo root
@@ -80,6 +81,7 @@ Example (User Secrets):
 ```dotnet user-secrets set "Smtp:Username" "your_email@gmail.com"```
 ```dotnet user-secrets set "Smtp:Password" "your_app_password"```
 ```dotnet user-secrets set "Smtp:To" "receiver@gmail.com"```
+
 
 
 
